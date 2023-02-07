@@ -1,11 +1,12 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import MtgCard from "../components/MtgCard"
 
 import { api } from "../utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const card = api.card.randomCard.useQuery()
 
   return (
     <>
@@ -44,8 +45,9 @@ const Home: NextPage = () => {
             </Link>
           </div>
           <p className="text-2xl text-white">
-            {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+            {card.data? card.data.name:""}
           </p>
+          <MtgCard/>
         </div>
       </main>
     </>
