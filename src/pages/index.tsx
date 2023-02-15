@@ -2,9 +2,11 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import MtgCard from "../components/MtgCard"
 
+import { api } from "../utils/api";
 
 const Home: NextPage = () => {
 
+	const card = api.card.randomCard.useQuery()
   return (
     <>
       <Head>
@@ -13,7 +15,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-                    <MtgCard/>
+                    <MtgCard card={card}/>
       </main>
     </>
   );
